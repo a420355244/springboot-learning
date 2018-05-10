@@ -10,7 +10,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     // 目标方法执行前进行拦截
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Object user = request.getAttribute("loginUser");
+        Object user = request.getSession().getAttribute("loginUser");
         if(null == user){
             // 如果未登陆，则返回到首页登陆界面并给予提示
             request.setAttribute("msg","请先登陆！");
